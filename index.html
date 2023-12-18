@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notes</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <main>
+        <section class="application">
+            <img src=".\pc-display-2-svgrepo-com.svg" class="host" id="pc">
+            <img src=".\server-svgrepo-com (2).svg" class="host" id="server"> 
+
+        </section>
+        <hr>
+        <section class="buttons">
+            <button class="button" id="createButton">Create</button>
+            <button class="button" id="readButton">Read</button>
+            <button class="button" id="updateButton">Update</button>
+            <button class="button" id="deleteButton">Delete</button>
+        </section>
+    </main>
+
+    <svg xmlns="http://www.w3.org/2000/svg" id="svgLine">
+      <path id="connectingLine" d="M420.46875 287.9921875 Q735.8203125 287.9921875 1051.171875 287.9921875" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="5 5">
+        <animate id="pathAnimation" attributeName="d" values="" dur="2s" keyPoints="0;1" keyTimes="0;1" repeatCount="indefinite" />
+      </path>
+    </svg>
+
+
+    <div class="modal create-modal container">
+      <h1>Create a note</h1>
+      <form action="http://localhost:4040/save" method="POST" class="my-form" id="create-form">
+
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="name">
+        </div>
+  
+        <div class="form-group">
+          <label for="latsName">Last Name</label>
+          <input type="text" id="lastName" name="last_name">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea name="text" id="message"></textarea>
+        </div>
+  
+        <button type="submit" class="button_save">Submit</button>
+      </form>
+
+      <div class="outer">
+          <div class="inner">
+            <p class="back">Back</p>
+          </div>
+      </div>
+    </div>
+
+    <div class="modal read-modal container">
+        <h1>Read the note</h1>
+        <form action="http://localhost:4040/read" method="POST" class="my-form" id="read-form">
+          <div class="form-group">
+            <label for="note_id">Enter the ID of the note you want to read</label>
+            <input type="number" id="note_id">
+          </div>    
+          <button type="submit" class="button_read">Submit</button>
+        </form>
+        <div class="outer">
+            <div class="inner">
+              <p class="back">Back</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal update-modal container">
+        <h1>Update the note</h1>
+        <form action="http://localhost:4040/update" method="POST" class="my-form" id="update-form">
+          <div class="form-group">
+            <label for="note_id">Enter the ID of the note you want to update</label>
+            <input type="number" id="note_id" name="index">
+          </div>
+          <label style="font-size: 20px; font-weight: 700;">Enter the data you want to update</label>
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="name">
+          </div>
+    
+          <div class="form-group">
+            <label for="latsName" style="justify-self: left;">Last Name</label>
+            <input type="text" id="lastName" name="last_name">
+          </div>
+  
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="text"></textarea>
+          </div>    
+          <button type="submit"  class="button_update">Submit</button>
+        </form>
+        <div class="outer">
+            <div class="inner">
+              <p class="back">Back</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal delete-modal container">
+        <h1>Delete the note</h1>
+        <form action="http://localhost:4040/delete" method="POST" class="my-form" id="delete-form">
+          <div class="form-group">
+            <label for="note_id">Enter the ID of the note you want to delete</label>
+            <input type="number" id="note_id">
+          </div>    
+          <button type="submit" class="button_delete">Submit</button>
+        </form>
+        <div class="outer">
+            <div class="inner">
+              <p class="back">Back</p>
+            </div>
+          </div>
+    </div>
+
+    <div class="modal error-modal container">
+      <h1>Something going wrong</h1>
+      <div class="error-message"></div>
+      <div class="outer">
+          <div class="inner">
+            <p class="back">Back</p>
+          </div>
+      </div>
+    </div>
+
+    <div class="modal result-modal container">
+      <div class="outer">
+          <div class="inner">
+            <p class="back">Back</p>
+          </div>
+      </div>
+    </div>
+</body>
+
+<script src="./index.js"></script>
+
+</html>

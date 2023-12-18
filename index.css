@@ -1,0 +1,400 @@
+body {
+  background: rgb(210, 202, 238);
+  background: linear-gradient(
+    225deg,
+    rgba(210, 202, 238, 1) 0%,
+    rgba(207, 174, 205, 1) 26%,
+    rgba(96, 228, 255, 0.8631827731092436) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  text-shadow: 0 2px rgba(20, 21, 23, 0.05);
+}
+
+main {
+    display: grid;
+    grid-template-rows: 6fr 10px 4fr;
+    height: 100%;
+}
+
+hr {
+  width: 100%;
+  margin: 0;
+  height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+.application {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}   
+
+
+.button {
+  height: 10vh;
+  width: 94%;
+  margin: 3%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #f2fff1;
+  border: none;
+  border-radius: 1vw;
+  box-shadow: 0px 2vh 5vh rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  }
+
+.button:hover {
+  background-color: #77dab2;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#createButton {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+#readButton {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+#updateButton {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+#deleteButton {
+  grid-row: 2;
+  grid-column: 3;
+}
+
+/* Ползунок */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+*::-webkit-scrollbar-track {
+  background: #d3d3d3;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #a3a3a3;
+  border-radius: 5px;
+  border: 1px solid rgb(119, 108, 108);
+  cursor: pointer;
+}
+
+/* Pop-Up */
+
+.modal {
+  color: #000000;
+  text-shadow: 0 2px rgba(20, 21, 23, 0.05);
+  text-align: center;
+  
+  position: fixed;
+  left: calc(50vw - 22.5vw);
+  top: 25vh;
+  width: 45vw;
+  height: 60vh;
+  border-radius: 0.5vw;
+  box-shadow: 1vh 2vw 5vh 0 rgba(0, 0, 0, 0.3);
+  background: rgba(238, 238, 238, 0.9);
+  transition: transform 0.5s;
+  transform: scale3d(0, 0, 0);
+  overflow: auto;
+}
+
+.modal.visible {
+  transform: scale3d(1, 1, 1);
+}
+
+.modal h1 {
+  font-size: 36px;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.modal p {
+  font-weight: 500;
+  max-width: 400px;
+  margin: 0 auto;
+
+  &:not(:last-child) {
+    margin: 0 auto 20px;
+  }
+}
+
+/* close button */
+
+.outer {
+  position: fixed;
+  top: 1vw;
+  right: 1.5vw;
+
+  /* margin: auto; */
+  width: 2vw;
+  cursor: pointer;
+}
+
+.inner {
+  width: inherit;
+  text-align: center;
+}
+
+.back { 
+  font-size: .8em; 
+  line-height: 4em;
+  text-transform: uppercase;
+  color: #383838;
+  transition: all .3s ease-in;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.inner:before, .inner:after {
+  position: absolute;
+  content: '';
+  height: 1px;
+  width: inherit;
+  background: #d35c5c;
+  left: 0;
+  transition: all .3s ease-in;
+}
+
+.inner:before {
+  top: 50%; 
+  transform: rotate(45deg);  
+}
+
+.inner:after {  
+  bottom: 50%;
+  transform: rotate(-45deg);  
+}
+
+.outer:hover .back {
+  opacity: 1;
+}
+
+.outer:hover .inner:before,
+.outer:hover .inner:after {
+  transform: rotate(0);
+}
+
+.outer:hover .inner:before {
+  top: 0;
+}
+
+.outer:hover .inner:after {
+  bottom: 0;
+}
+
+
+/* images */
+
+.host {
+  fill: #f2fff1;
+  align-self: center;
+  justify-self: center;
+  user-select: none;
+}
+
+#pc {
+  grid-column: 3;
+  width: 120%;
+}
+
+#server {
+  grid-column: 9;
+  width: 120%;
+}
+
+#svgLine {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  z-index: -100;
+}
+
+              /* form */
+
+.form-group {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.form-group input,
+.form-group textarea {
+  width: 90%;
+  padding: 5px;
+  font-size: 18px;
+  border: 1px solid rgba(7, 5, 5, 0.199);
+  margin-top: 5px;
+  border-width: 1px;
+  border-radius: 1vh;
+}
+
+.form-group textarea {
+  height: calc(100% - 20px - 10px - 10px);
+}
+
+textarea {
+  resize: vertical;
+}
+button[type="submit"] {
+  justify-self: center;
+  width: 40%;
+  border: solid;
+  border-width: 1px;
+  outline: none;
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 8px;
+  font-family: "Montserrat";
+  color: rgb(27, 166, 247);
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s ease background-color;
+}
+button[type="submit"]:hover {
+  background-color: rgb(214, 226, 236);
+}
+#status {
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+#status.success {
+  background-color: rgb(211, 250, 153);
+  animation: status 4s ease forwards;
+}
+#status.error {
+  background-color: rgb(250, 129, 92);
+  color: white;
+  animation: status 4s ease forwards;
+}
+@keyframes status {
+  0% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  90% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+#create-form {
+  height: 80%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 3fr 1fr;
+  grid-template-columns: 1fr;
+  justify-content: center;
+}
+
+#read-form, #delete-form{
+  /* height: 80%; */
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  justify-content: center;
+}
+
+#update-form {
+  height: 80%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 0.5fr 1fr 1fr 3fr 1fr;
+  grid-template-columns: 1fr;
+  justify-content: center;
+}
+
+.my-form input {
+  justify-self: center;
+}
+
+/* error modal */
+
+.error-modal {
+  background: rgba(252, 217, 217, 0.9);
+}
+
+.error-modal.visible {
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+  animation: red-glow 1.5s infinite alternate;
+}
+
+/* Анимация для эффекта свечения */
+@keyframes red-glow {
+  0% {
+    box-shadow: 0 0 20px 5px rgba(252, 116, 116, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px 10px rgba(255, 60, 60, 0.2);
+  }
+}
+
+/* result modal */
+
+.result-modal {
+  background: rgba(226, 246, 229, 0.9);
+  height: 40vh;
+}
+
+.result-modal.visible {
+  box-shadow: 0 0 20px 5px rgba(195, 245, 203, 0.8);
+  animation: green-glow 1.5s infinite alternate;
+}
+
+/* Анимация для эффекта свечения */
+@keyframes green-glow {
+  0% {
+    box-shadow: 0 0 20px 5px rgba(152, 255, 187, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px 10px rgba(171, 244, 202, 0.4);
+  }
+}
+
+#result-data {
+  width: 100%;
+  /* height: 100%; */
+  font-size: 25px;
+  text-justify: center;
+  margin-top: 5%;
+}
